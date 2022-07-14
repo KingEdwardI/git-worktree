@@ -6,10 +6,11 @@ arg_2="${args[2]}"
 arg_3="${args[3]}"
 arg_4="${args[4]}"
 
+worktree_dir="$HOME/.worktrees/"
 ## Base Methods ##
 
 add() {
-  git worktree add "${args/add /}"
+  git worktree add "${worktree_dir}${args/add /}"
 }
 
 list() {
@@ -18,11 +19,11 @@ list() {
 
 remove() {
   echo "Removing worktree ${arg_2}"
-  git worktree remove "${arg_2}"
+  git worktree remove "${worktree_dir}${arg_2}"
 }
 
 move() {
-  git worktree move "${arg_2} ${arg_3}"
+  git worktree move "${worktree_dir}${arg_2} ${worktree_dir}${arg_3}"
 }
 
 ## Additional stuff ##
@@ -43,13 +44,20 @@ switch() {
 }
 
 help_menu() {
-  echo "${directory}"
   echo "Todo: help menu"
+}
+
+check_for_worktree_dir() {
+  if ! [[ (-d "${worktree_dir}")]]; then
+    mkdir "${worktree_dir}"
+  fi
 }
 
 ## Main ##
 
 main() {
+  check_for_worktree_dir
+
   if [[
     (-z "${args}") || 
     ("${arg_1}" = "-h") || 
@@ -60,15 +68,31 @@ main() {
     return;
   fi
 
-  if [[ ("${arg_1}" = "list") || ("${arg_1}" = "-l") ]]; then
+  if [[ 
+    ("${arg_1}" = "list") || 
+    ("${arg_1}" = "-l") 
+  ]]; then
     list
-  elif [[ ("${arg_1}" = "add") || ("${arg_1}" = "-a") ]]; then
+  elif [[ 
+    ("${arg_1}" = "add") || 
+    ("${arg_1}" = "-a") 
+  ]]; then
     add
-  elif [[ ("${arg_1}" = "switch") || ("${arg_1}" = "-s") ]]; then
+  elif [[ 
+    ("${arg_1}" = "switch") || 
+    ("${arg_1}" = "-s") 
+  ]]; then
     switch
-  elif [[ ("${arg_1}" = "remove") || ("${arg_1}" = "-r") ]]; then
+  elif [[ 
+    ("${arg_1}" = "remove") || 
+    ("${arg_1}" = "-r") || 
+    ("${arg_1}" = "rm") 
+  ]]; then
     remove
-  elif [[ ("${arg_1}" = "move") || ("${arg_1}" = "-m") ]]; then
+  elif [[ 
+    ("${arg_1}" = "move") || 
+    ("${arg_1}" = "-m") 
+  ]]; then
     move
   fi
 
