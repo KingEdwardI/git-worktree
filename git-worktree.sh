@@ -45,9 +45,11 @@ switch() {
 
 help_menu() {
   echo "gwt - a wrapper for git's built-in worktree command."
+  echo ""
   echo "This provides a wrapper around the base commands, and some utility"
   echo "methods to help with managing the worktrees."
   echo "Worktrees are stored at \$HOME/.worktrees to avoid cluttering up local directories"
+  echo ""
   echo "Usage:"
   echo "  gwt - displays this menu"
   echo "  gwt [-h --help help] - displays this menu"
