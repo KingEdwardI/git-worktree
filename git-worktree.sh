@@ -44,7 +44,18 @@ switch() {
 }
 
 help_menu() {
-  echo "Todo: help menu"
+  echo "gwt - a wrapper for git's built-in worktree command."
+  echo "This provides a wrapper around the base commands, and some utility"
+  echo "methods to help with managing the worktrees."
+  echo "Worktrees are stored at \$HOME/.worktrees to avoid cluttering up local directories"
+  echo "Usage:"
+  echo "  gwt - displays this menu"
+  echo "  gwt [-h --help help] - displays this menu"
+  echo "  gwt [-l list] - prints a list of worktrees for the current project"
+  echo "  gwt [-a add] <worktree-name> - creates a new worktree based on the current working tree"
+  echo "  gwt [-s switch] <worktree-name> - switches current worktrees"
+  echo "  gwt [-r remove] <worktree-name> - deletes an existing worktree"
+  echo "  gwt [-m move] <old-name> <new_name> - moves an existing worktree to a new location"
 }
 
 check_for_worktree_dir() {
