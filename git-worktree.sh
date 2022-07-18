@@ -32,15 +32,17 @@ switch() {
   if [[ (-z "${arg_2}") || ("${arg_2}" = "-") ]]; then
     main_tree=$(git worktree list --porcelain | awk '{print $0; exit}')
     main_dir="${main_tree/worktree /}"
-    echo "Changing to worktree at: ${main_dir}"
+    echo "Changing to main worktree at: ${main_dir}"
     cd "${main_dir}"
+    # $SHELL
     return
   fi
 
   tree=$(git worktree list --porcelain | awk '/'"${arg_2}"'/ {print; exit}')
   dir="${tree/worktree /}"
   echo "Changing to worktree at: ${dir}"
-	cd "${dir}"
+  cd "${dir}"
+  # $SHELL
 }
 
 help_menu() {
@@ -69,6 +71,7 @@ check_for_worktree_dir() {
 ## Main ##
 
 main() {
+  echo  "${arg_1}" "${arg_2}" "${arg_3}" "${arg_4}"
   check_for_worktree_dir
 
   if [[
