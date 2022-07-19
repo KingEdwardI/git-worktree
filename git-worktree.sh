@@ -71,7 +71,6 @@ check_for_worktree_dir() {
 ## Main ##
 
 main() {
-  echo  "${arg_1}" "${arg_2}" "${arg_3}" "${arg_4}"
   check_for_worktree_dir
 
   if [[
@@ -111,7 +110,6 @@ main() {
   ]]; then
     move
   fi
-
 }
 
 main
