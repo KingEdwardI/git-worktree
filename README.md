@@ -14,13 +14,14 @@ For now, the way I've gotten this to work is a bit convoluted.
 So far it's solved most of the issues I've had, but it could be better.
 
 1. If needed, make the script executable:
-  - `chmod +x git-worktree.sh`
+    - `chmod +x git-worktree.sh`
 2. Copy the script into your preferred bin folder.
-  - `cp git-worktree.sh /usr/bin/local/gwt`
-  - **Note:** This is not required, you can put the script anywhere.
-    I just find it convenient to have it in a static location.
+    - `cp git-worktree.sh /usr/bin/local/gwt`
+    - **Note:** This is not required, you can put the script anywhere.
+      I just find it convenient to have it in a static location.
 3. Add an alias to your .bashrc, .zshrc, etc.
-  - `alias gwt=". gwt"`
+    - `alias gwt=". gwt"`
+    - Alternatively: `alias gwt=". /path/to/git-worktree.sh`
 
 Now you should be good to go. Open a new shell and test it out by
 simply running `gwt`. It should print the help menu.
